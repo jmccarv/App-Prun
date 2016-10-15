@@ -1,0 +1,6 @@
+^.hg\b
+^.hgtags\b
+^.hgignore
+^Makefile$
+^MANIFEST\.
+^MYMETA
