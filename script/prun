@@ -33,19 +33,24 @@ OPTIONS
   -e, --exit-on-failure  exit the first time a command returns a failed status
   -h, -?, --help         display this help
   -p, --processes=<num>  run up to num processes at once (default: $def_processes)
-  -r  --report-failed    print a message to STDERR for each command the fails
+  -r  --report-failed    print a message to STDERR for each command that fails
   -V, --version          print version and exit
 
 NOTES
-  Embedded newlines in any commad will break this script as it stupidly
-  treats each line as a command without any special parsing
+  Embedded newlines in any command will break this script as it stupidly
+  treats each line as a command without any special parsing.
 
-  Empty lines and comments (lines beginning with '#') are ignored
+  Empty lines and comments (lines beginning with '#') are ignored.
 
 EXAMPLES
   # Run tkprof against all .trc files in the current directory, run 32
   # of them at a time.
   for F in *.trc; do echo "tkprof \$F \${F%trc}txt"; done | $me -p 32
+
+  # Run all commands in a file (command_file), one line at a time.  Run
+  # the default number of processes in parallel ($def_processes).
+  # Ignore any failed processes, but do report to STDOUT any that fail.
+  $me -e -r command_file
 EOT
     exit 1;
 }
