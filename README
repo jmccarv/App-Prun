@@ -1,8 +1,7 @@
 NAME
 
-    App::Prun - Provides the prun and sprun scripts as command line
-    interfaces to Parallel::ForkManager and Parallel::ForkManager::Scaled
-    respectively.
+    App::Prun - Provides the prun script as a command line interface to
+    Parallel::ForkManager.
 
 VERSION
 
@@ -11,20 +10,16 @@ VERSION
 SYNOPSYS
 
         for nr in `seq 1..100`; do echo "echo command #$nr" | prun
-        for nr in `seq 1..100`; do echo "echo command #$nr" | sprun
     
         prun command_file_to_run_in_parallel
-        sprun command_file_to_run_in_parallel
 
 DESCRIPTION
 
-    The provided prun and sprun scripts allow you to utilize multiple CPUs
-    for some workloads from the shell more easily.
+    prun allows you to utilize multiple CPUs for some workloads from the
+    shell more easily.
 
-    They take a list of commands (stdin and/or from file(s)) and run the
+    prun takes a list of commands (stdin and/or from file(s)) and run the
     commands in parallel.
-
- prun
 
     prun is a CLI front end to Parallel::ForkManager. It runs commands in
     parallel up to a maximum number of processes at once.
@@ -33,21 +28,9 @@ DESCRIPTION
 
       * Parallel::ForkManager
 
- sprun
-
-    sprun is a CLI front end to Paralell::ForkManager::Scaled. It runs
-    commands in parallel while trying to keep the CPUs at a specified level
-    of activity by constantly adjusting the number of running processes.
-
-      * sprun --help
-
-      * Parallel::ForkManager::Scaled
-
 EXAMPLES
 
     There are also examples available from the command line --help.
-
- prun
 
     Run tkprof against all .trc files in the current directory, run 32 of
     them at a time.
@@ -60,40 +43,13 @@ EXAMPLES
 
       prun -e -r command_file
 
- sprun
-
-    Run tkprof against all .trc files in the current directory while
-    attempting to keep the system 75% idle, don't adjust the number of
-    processes unless idle time goes below 74 or above 76, and re-evaluate
-    after each process exits (update frequency = 0).
-
-      for F in *.trc; do echo "tkprof $F ${F%trc}txt"; done | sprun -t 75 -T 2 -u 0
-
-    Run all commands in a file (command_file), one line at a time. Manually
-    bound the minimum and maximum number of processes to run and start with
-    4. Keep the CPU 100% busy (0% idle) and re-evaluate at most every 3
-    seconds. Ignore any failed processes, but do report to STDOUT any that
-    fail.
-
-      sprun -e -r -m 2 -M 8 -i 4 -u 3 command_file
-
-NOTES
-
-    sprun will be installed whether you have its required
-    Parallel::ForkManager::Scaled module installed or not. This is
-    intentional as I didn't want to make App::Prun depend on
-    Parallel::ForkManager::Scaled since some users may only care about prun
-    / Parallel::ForkManager.
-
-    This also means you will have to manually install
-    Parallel::ForkManager::Scaled if you want sprun to work. I may
-    reconsider this approach in a future release.
-
 AUTHOR
 
     Jason McCarver <slam@parasite.cc>
 
 SEE ALSO
+
+    App::Prun::Scaled
 
     Parallel::ForkManager
 

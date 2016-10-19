@@ -9,7 +9,7 @@ use Data::Dumper;
 use App::Prun;
 use Parallel::ForkManager;
 
-plan tests => 13;
+plan tests => 23;
 
 script_compiles( 'script/prun' );
 
@@ -32,3 +32,19 @@ ok ($obj->pm->waitpid_blocking_sleep == 0, 'waitpid_blocking_sleep');
 ok ($obj->pm->max_procs == 37, '--processes');
 ok (defined $obj->exit_on_failed_proc, '--exit-on-failure');
 ok (defined $obj->report_failed_procs, '--report-failed');
+
+my $stderr;
+script_runs( [qw(script/prun t/test_false)], {exit => 0, stdout => \$stdout, stderr => \$stderr}, 'false 1');
+ok($stderr eq '', 'ignore failed process');
+
+script_runs( [qw(script/prun -r t/test_false)], {exit => 0, stdout => \$stdout, stderr => \$stderr}, 'false 2');
+ok($stderr =~ /failed with exit/, 'report failed process');
+
+script_runs( [qw(script/prun -e t/test_false)], {exit => 1, stdout => \$stdout, stderr => \$stderr}, 'false 3');
+ok($stderr eq '', "don't report failed process");
+
+script_runs( [qw(script/prun -e -r t/test_false)], {exit => 1, stdout => \$stdout, stderr => \$stderr}, 'false 4');
+ok($stderr =~ /failed with exit/, 'report failed process and exit');
+
+script_runs( [qw(script/prun -e -r t/test_true)], {exit => 0, stdout => \$stdout, stderr => \$stderr}, 'true 1');
+ok($stderr eq '', 'successful process');

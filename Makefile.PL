@@ -14,8 +14,6 @@ requires 'Parallel::ForkManager';
 requires 'Storable';
 requires 'namespace::clean';
 
-recommends 'Parallel::ForkManager::Scaled' => '0.13';
-
 test_requires 'Test::More';
 test_requires 'Test::Script';
 

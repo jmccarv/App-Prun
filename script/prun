@@ -23,7 +23,8 @@ Run commands, one per line, from either FILEs or stdin if no FILEs specified.
 Up to the defined number (-p) of commands will be run in parallel by forking
 and running a shell for each one.
 
-Each command is passed to a new \$SHELL process to be interpreted and run.
+Each command is passed to perl's system() function to be executed. system() 
+may use your system's shell to run the command. See perldoc -f system.
 
 If --exit-on-failure is specified, and a command exits with a failed status, 
 $me will wait for any running children to complete then exit with an error
