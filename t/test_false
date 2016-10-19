@@ -1,1 +1,1 @@
-false
+perl -e "exit 1"

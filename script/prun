@@ -70,7 +70,7 @@ sub get_parallel {
     }
 
     no warnings;
-    $ret = `nproc`;
+    $ret = `nproc 2>/dev/null`;
     use warnings;
     if (defined $ret) {
         chomp $ret;
