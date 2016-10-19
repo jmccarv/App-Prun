@@ -4,7 +4,8 @@ use inc::Module::Install;
 
 name     'App-Prun';
 all_from 'lib/App/Prun.pm';
-repository 'https://bitbucket.org/jmccarv/perl-app-prun';
+auto_set_repository;
+
 no_index directory => '.hg';
 
 requires 'File::Spec';
@@ -18,6 +19,7 @@ recommends => 'Sys::CPU';
 
 test_requires 'Test::More';
 test_requires 'Test::Script';
+
 
 install_script glob('script/*');
 auto_install;

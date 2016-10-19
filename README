@@ -5,7 +5,7 @@ NAME
 
 VERSION
 
-    Version 1.00
+    Version 1.01
 
 SYNOPSYS
 
@@ -54,6 +54,16 @@ SEE ALSO
     Parallel::ForkManager
 
     Parallel::ForkManager::Scaled
+
+REPOSITORY
+
+    The mercurial repository for this module may be found here:
+
+      https://bitbucket.org/jmccarv/app-prun
+
+    clone it:
+
+      hg clone https://bitbucket.org/jmccarv/app-prun
 
 COPYRIGHT AND LICENSE
 
