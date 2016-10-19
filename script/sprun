@@ -85,6 +85,7 @@ sub get_opts {
         'idle_target|idle-target|t=f',
         'idle_threshold|idle-threshold|T=f',
         'update_frequency|update-frequency|u=i',
+        'test_dump|test-dump',
         'version|V',
     ) or usage();
 
@@ -101,19 +102,22 @@ sub get_opts {
 sub main {
     my %opts = get_opts();
 
-    my $pm = Parallel::ForkManager::Scaled->new;
-
-    do { $pm->$_($opts{$_}) if defined $opts{$_} } for qw(
+    my @keys = grep { defined $opts{$_} } qw( 
         initial_procs hard_min_procs hard_max_procs
         idle_target idle_threshold update_frequency
     );
 
+    my %args;
+    @args{@keys} = @opts{@keys} if @keys;
+
     my $ar = App::Prun->new(
-        pm => Parallel::ForkManager::Scaled->new($pm),
+        pm => Parallel::ForkManager::Scaled->new(%args),
         report_failed_procs => $opts{report_failed},
         exit_on_failed_proc => $opts{exit_on_failure},
     );
-    
+
+    $ar->_test_dump if $opts{test_dump};
+
     $ar->run_command($_) while (<>);
     $ar->done;
 }
