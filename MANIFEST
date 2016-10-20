@@ -1,5 +1,5 @@
-App-Prun-1.00.tar.gz
 Changes
+contrib/dummy_load
 inc/Module/AutoInstall.pm
 inc/Module/Install.pm
 inc/Module/Install/AutoInstall.pm
