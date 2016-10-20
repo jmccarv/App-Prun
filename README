@@ -5,7 +5,7 @@ NAME
 
 VERSION
 
-    Version 1.01
+    Version 1.02
 
 SYNOPSYS
 
@@ -42,6 +42,11 @@ EXAMPLES
     failed processes, but do report to STDOUT any that fail.
 
       prun -e -r command_file
+
+    Test with the dummy_load script included in the contrib/ directory of
+    this distribution:
+
+      for F in `seq 1 100`; do echo "contrib/dummy_load"; done | prun
 
 AUTHOR
 

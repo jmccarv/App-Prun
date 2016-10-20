@@ -4,7 +4,7 @@ use Moo;
 use Storable qw( freeze );  # to support testing
 use namespace::clean;
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 
 has pm => ( is => 'ro', required => 1 );
 has report_failed_procs => ( is => 'ro', default => 1 );
@@ -91,7 +91,7 @@ App::Prun - Provides the prun script as a command line interface to L<Parallel::
 
 =head1 VERSION
 
-Version 1.01
+Version 1.02
 
 =head1 SYNOPSYS
 
@@ -132,6 +132,11 @@ the default number of processes in parallel ($def_processes).
 Ignore any failed processes, but do report to STDOUT any that fail.
 
   prun -e -r command_file
+
+Test with the dummy_load script included in the contrib/ directory 
+of this distribution:
+
+  for F in `seq 1 100`; do echo "contrib/dummy_load"; done | prun
 
 =head1 AUTHOR
 
