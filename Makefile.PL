@@ -18,7 +18,7 @@ requires 'namespace::clean';
 recommends => 'Sys::CPU';
 
 test_requires 'Test::More';
-test_requires 'Test::Script';
+test_requires 'Test::Script' => '1.09';
 
 
 install_script glob('script/*');
