@@ -51,7 +51,7 @@ EXAMPLES
   # Run all commands in a file (command_file), one line at a time.  Run
   # the default number of processes in parallel ($def_processes).
   # Ignore any failed processes, but do report to STDOUT any that fail.
-  $me -e -r command_file
+  $me -r command_file
 EOT
     exit 1;
 }

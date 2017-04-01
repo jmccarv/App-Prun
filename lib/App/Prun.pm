@@ -4,7 +4,7 @@ use Moo;
 use Storable qw( freeze );  # to support testing
 use namespace::clean;
 
-our $VERSION = '1.03';
+our $VERSION = '1.04';
 
 has pm => ( is => 'ro', required => 1 );
 has report_failed_procs => ( is => 'ro', default => 1 );
@@ -131,7 +131,7 @@ Run all commands in a file (command_file), one line at a time.  Run
 the default number of processes in parallel ($def_processes).
 Ignore any failed processes, but do report to STDOUT any that fail.
 
-  prun -e -r command_file
+  prun -r command_file
 
 Test with the dummy_load script included in the contrib/ directory 
 of this distribution:
