@@ -91,7 +91,7 @@ App::Prun - Provides the prun script as a command line interface to L<Parallel::
 
 =head1 VERSION
 
-Version 1.03
+Version 1.04
 
 =head1 SYNOPSYS
 
