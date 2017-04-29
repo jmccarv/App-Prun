@@ -4,7 +4,7 @@ use Moo;
 use Storable qw( freeze );  # to support testing
 use namespace::clean;
 
-our $VERSION = '1.04';
+our $VERSION = '1.05';
 
 has pm => ( is => 'ro', required => 1 );
 has report_failed_procs => ( is => 'ro', default => 1 );

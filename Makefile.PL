@@ -1,5 +1,6 @@
 #!/usr/bin/env perl
 
+use lib '.';
 use inc::Module::Install;
 
 name     'App-Prun';
