@@ -1,10 +1,12 @@
 package App::Prun;
 
+use 5.010;
+
 use Moo;
 use Storable qw( freeze );  # to support testing
 use namespace::clean;
 
-our $VERSION = '1.06';
+our $VERSION = '1.07';
 
 has pm => ( is => 'ro', required => 1 );
 has report_failed_procs => ( is => 'ro', default => 1 );
@@ -68,7 +70,7 @@ App::Prun - Provides the prun script as a command line interface to L<Parallel::
 
 =head1 VERSION
 
-Version 1.04
+Version 1.07
 
 =head1 SYNOPSYS
 
