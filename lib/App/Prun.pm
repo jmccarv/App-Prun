@@ -1,12 +1,12 @@
+use strict;
+use warnings;
 package App::Prun;
-
-use 5.010;
 
 use Moo;
 use Storable qw( freeze );  # to support testing
 use namespace::clean;
 
-our $VERSION = '1.07';
+use 5.010;
 
 has pm => ( is => 'ro', required => 1 );
 has report_failed_procs => ( is => 'ro', default => 1 );
@@ -58,19 +58,12 @@ sub _test_dump {
     exit 255;
 }
 
+# ABSTRACT: Provides the prun script as a command line interface to L<Parallel::ForkManager>.
 1;
 
 __END__
 
 =pod
-
-=head1 NAME
-
-App::Prun - Provides the prun script as a command line interface to L<Parallel::ForkManager>.
-
-=head1 VERSION
-
-Version 1.07
 
 =head1 SYNOPSYS
 
@@ -106,7 +99,7 @@ of them at a time.
 
   for F in *.trc; do echo "tkprof $F ${F%trc}txt"; done | prun -p 32
 
-Run all commands in a file (command_file), one line at a time.  Run
+Run all commands in a file (command_file), one command per line. Run
 the default number of processes in parallel ($def_processes).
 Ignore any failed processes, but do report to STDOUT any that fail.
 
@@ -116,10 +109,6 @@ Test with the dummy_load script included in the contrib/ directory
 of this distribution:
 
   for F in `seq 1 100`; do echo "contrib/dummy_load"; done | prun
-
-=head1 AUTHOR
-
-Jason McCarver <slam@parasite.cc>
 
 =head1 SEE ALSO
 
@@ -142,12 +131,5 @@ The mercurial repository for this module may be found here:
 clone it:
 
   hg clone https://bitbucket.org/jmccarv/app-prun
-
-=head1 COPYRIGHT AND LICENSE
-
-This software is copyright (c) 2016 by Jason McCarver
-
-This is free software; you can redistribute it and/or modify it under the
-same terms as the Perl 5 programming language system itself.
 
 =cut
