@@ -54,13 +54,13 @@ of this distribution:
 
 # REPOSITORY
 
-The mercurial repository for this module may be found here:
+The source repository for this module may be found here:
 
-    https://bitbucket.org/jmccarv/app-prun
+    https://github.com/jmccarv/App-Prun.git
 
 clone it:
 
-    hg clone https://bitbucket.org/jmccarv/app-prun
+    git clone https://github.com/jmccarv/App-Prun.git
 
 # AUTHOR
 
