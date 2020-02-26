@@ -54,9 +54,7 @@ of this distribution:
 
 # REPOSITORY
 
-The source repository for this module may be found here:
-
-    https://github.com/jmccarv/App-Prun.git
+The source repository for this module may be found at https://github.com/jmccarv/App-Prun.git
 
 clone it:
 
