@@ -15,7 +15,7 @@ version 1.09
 # SEE ALSO
 
 - [prun](https://metacpan.org/pod/prun)
-- \* prun --help
+- prun --help
 
 # REPOSITORY
 
@@ -35,11 +35,3 @@ This software is copyright (c) 2022 by Jason McCarver.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
-
-# POD ERRORS
-
-Hey! **The above document had some coding errors, which are explained below:**
-
-- Around line 25:
-
-    Expected text after =item, not a bullet

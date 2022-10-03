@@ -77,7 +77,7 @@ __END__
 
 =item L<prun>
 
-=item * prun --help
+=item prun --help
 
 =back
 
