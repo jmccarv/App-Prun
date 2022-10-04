@@ -4,7 +4,7 @@ prun - Provides the prun script as a command line interface to [Parallel::ForkMa
 
 # VERSION
 
-version 1.10
+version 1.11
 
 # DESCRIPTION
 
@@ -41,7 +41,7 @@ Ignore any failed processes, but do report to STDOUT any that fail.
 
     prun -r command_file
 
-Test with the dummy\_load script included in the contrib/ directory 
+Test with the dummy\_load script included in the contrib/ directory
 of this distribution:
 
     for F in `seq 1 100`; do echo "contrib/dummy_load"; done | prun

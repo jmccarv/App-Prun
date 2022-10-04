@@ -65,9 +65,9 @@ sub get_parallel {
     my $def_parallel = shift;
     my $ret;
 
-    eval { require Sys::CPU };
+    eval { require Sys::CpuAffinity };
     unless ($@) {
-        $ret = Sys::CPU::cpu_count();
+        $ret = Sys::CpuAffinity::getNumCpus()
         return $ret if $ret;
     }
 
