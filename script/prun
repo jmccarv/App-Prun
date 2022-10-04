@@ -67,7 +67,7 @@ sub get_parallel {
 
     eval { require Sys::CpuAffinity };
     unless ($@) {
-        $ret = Sys::CpuAffinity::getNumCpus()
+        $ret = Sys::CpuAffinity::getNumCpus();
         return $ret if $ret;
     }
 
