@@ -1,10 +1,24 @@
 # NAME
 
-App::Prun - Provides the prun script as a command line interface to [Parallel::ForkManager](https://metacpan.org/pod/Parallel%3A%3AForkManager).
+prun - Provides the prun script as a command line interface to [Parallel::ForkManager](https://metacpan.org/pod/Parallel%3A%3AForkManager).
 
 # VERSION
 
-version 1.09
+version 1.10
+
+# DESCRIPTION
+
+**prun** allows you to utilize multiple CPUs
+for some workloads from the shell more easily.
+
+prun takes a list of commands (stdin and/or from file(s)) and run the commands
+in parallel.
+
+prun is a CLI front end to [Parallel::ForkManager](https://metacpan.org/pod/Parallel%3A%3AForkManager). It runs commands in
+parallel up to a maximum number of processes at once.
+
+- prun --help
+- [Parallel::ForkManager](https://metacpan.org/pod/Parallel%3A%3AForkManager)
 
 # SYNOPSYS
 
@@ -12,10 +26,31 @@ version 1.09
 
     prun command_file_to_run_in_parallel
 
+# EXAMPLES
+
+There are also examples available from the command line **--help**.
+
+Run tkprof against all .trc files in the current directory, run 32
+of them at a time.
+
+    for F in *.trc; do echo "tkprof $F ${F%trc}txt"; done | prun -p 32
+
+Run all commands in a file (command\_file), one command per line. Run
+the default number of processes in parallel ($def\_processes).
+Ignore any failed processes, but do report to STDOUT any that fail.
+
+    prun -r command_file
+
+Test with the dummy\_load script included in the contrib/ directory 
+of this distribution:
+
+    for F in `seq 1 100`; do echo "contrib/dummy_load"; done | prun
+
 # SEE ALSO
 
-- [prun](https://metacpan.org/pod/prun)
-- prun --help
+- [App::Prun::Scaled](https://metacpan.org/pod/App%3A%3APrun%3A%3AScaled)
+- [Parallel::ForkManager](https://metacpan.org/pod/Parallel%3A%3AForkManager)
+- [Parallel::ForkManager::Scaled](https://metacpan.org/pod/Parallel%3A%3AForkManager%3A%3AScaled)
 
 # REPOSITORY
 

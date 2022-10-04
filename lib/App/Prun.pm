@@ -38,7 +38,7 @@ sub run_command {
     my $cmd = shift;
 
     chomp $cmd;
-    
+
     # Skip blank lines and comments
     return if (/^\s*(#|$)/);
 
